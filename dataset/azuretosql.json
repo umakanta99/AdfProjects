@@ -1,0 +1,27 @@
+{
+	"name": "azuretosql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azuretosql_linked",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "ADLSToSql.txt",
+				"fileSystem": "sql"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
