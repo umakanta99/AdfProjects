@@ -60,10 +60,13 @@
 		],
 		"typeProperties": {
 			"schema": {
-				"value": "@dataset().TableName",
+				"value": "@dataset().SchemaName",
 				"type": "Expression"
 			},
-			"table": "Address"
+			"table": {
+				"value": "@dataset().TableName",
+				"type": "Expression"
+			}
 		}
 	}
 }
