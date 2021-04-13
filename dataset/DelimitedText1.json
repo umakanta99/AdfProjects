@@ -13,7 +13,7 @@
 				"fileName": "ADLSToSql.txt",
 				"fileSystem": "gudun"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "|",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
