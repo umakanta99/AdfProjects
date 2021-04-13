@@ -5,6 +5,16 @@
 			"referenceName": "LS_AzureSql",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"TableName": {
+				"type": "string",
+				"defaultValue": "Address"
+			},
+			"SchemaName": {
+				"type": "string",
+				"defaultValue": "SalesLT"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
@@ -49,7 +59,10 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "SalesLT",
+			"schema": {
+				"value": "@dataset().TableName",
+				"type": "Expression"
+			},
 			"table": "Address"
 		}
 	}
