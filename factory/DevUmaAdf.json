@@ -1,0 +1,9 @@
+{
+	"name": "DevUmaAdf",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e3aa465a-7246-48d0-8a74-d00dc8b5b8d9",
+		"tenantId": "5a10f0bc-1d49-479b-b811-c85d3ae0f246"
+	}
+}
