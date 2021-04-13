@@ -1,0 +1,9 @@
+{
+	"name": "umakanta",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "797bec55-606f-40f5-ba65-5b60a3e74edd",
+		"tenantId": "5a10f0bc-1d49-479b-b811-c85d3ae0f246"
+	}
+}
