@@ -24,7 +24,24 @@
 					"dataset": {
 						"referenceName": "DSAzureSql",
 						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEachAzureSqlTables",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "LKP_AllTables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"batchCount": 1
 				}
 			}
 		],
