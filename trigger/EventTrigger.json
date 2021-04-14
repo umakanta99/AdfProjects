@@ -21,7 +21,8 @@
 			"ignoreEmptyBlobs": false,
 			"scope": "/subscriptions/cdf7b294-2995-4331-9f21-80e5a2d3f7c4/resourceGroups/uma/providers/Microsoft.Storage/storageAccounts/azuretosql",
 			"events": [
-				"Microsoft.Storage.BlobCreated"
+				"Microsoft.Storage.BlobCreated",
+				"Microsoft.Storage.BlobDeleted"
 			]
 		}
 	}
