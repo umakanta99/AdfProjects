@@ -2,33 +2,37 @@
 	"name": "AzureSqlTable1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabase1",
+			"referenceName": "Azuretosql_linked2",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "id",
+				"name": "PersonID",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "name",
+				"name": "LastName",
 				"type": "nvarchar"
 			},
 			{
-				"name": "gender",
+				"name": "FirstName",
 				"type": "nvarchar"
 			},
 			{
-				"name": "phone",
+				"name": "Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "City",
 				"type": "nvarchar"
 			}
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Employee"
+			"table": "demo1"
 		}
 	}
 }
