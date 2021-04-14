@@ -1,0 +1,25 @@
+{
+	"name": "OnPremSqlConnection",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Onprem",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Test1"
+		}
+	}
+}
