@@ -17,7 +17,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT * from INFORMATION_SCHEMA.TABLES\nWHERE TABLE_SCHEMA='SalesLT' AND TABLE_TYPE='BASE TABLE'",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT * from INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA =','''',pipeline().parameters.SchemaName,'''',' AND TABLE_TYPE=''BASE TABLE''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
