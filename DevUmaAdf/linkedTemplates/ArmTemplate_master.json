@@ -1,0 +1,126 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DevUmaAdf"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"Azuretosql_linked1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Azuretosql_linked1'"
+		},
+		"Azuretosql_linked2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Azuretosql_linked2'"
+		},
+		"LS_ADLSGen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLSGen2'"
+		},
+		"LS_AzureSql_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_AzureSql'"
+		},
+		"LS_sqlToAzure_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_sqlToAzure'"
+		},
+		"azuretosql_linked_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'azuretosql_linked'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
+		"LS_ADLSGen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
+		"azuretosql_linked_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
+		"EventTrigger_properties_SQLToADLSSingleContainer_parameters_SchemaName": {
+			"type": "string",
+			"defaultValue": "SalesLT"
+		},
+		"EventTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/cdf7b294-2995-4331-9f21-80e5a2d3f7c4/resourceGroups/uma/providers/Microsoft.Storage/storageAccounts/azuretosql"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "DevUmaAdf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"Azuretosql_linked1_connectionString": {
+						"value": "[parameters('Azuretosql_linked1_connectionString')]"
+					},
+					"Azuretosql_linked2_connectionString": {
+						"value": "[parameters('Azuretosql_linked2_connectionString')]"
+					},
+					"LS_ADLSGen2_accountKey": {
+						"value": "[parameters('LS_ADLSGen2_accountKey')]"
+					},
+					"LS_AzureSql_connectionString": {
+						"value": "[parameters('LS_AzureSql_connectionString')]"
+					},
+					"LS_sqlToAzure_connectionString": {
+						"value": "[parameters('LS_sqlToAzure_connectionString')]"
+					},
+					"azuretosql_linked_accountKey": {
+						"value": "[parameters('azuretosql_linked_accountKey')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"LS_ADLSGen2_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLSGen2_properties_typeProperties_url')]"
+					},
+					"azuretosql_linked_properties_typeProperties_url": {
+						"value": "[parameters('azuretosql_linked_properties_typeProperties_url')]"
+					},
+					"EventTrigger_properties_SQLToADLSSingleContainer_parameters_SchemaName": {
+						"value": "[parameters('EventTrigger_properties_SQLToADLSSingleContainer_parameters_SchemaName')]"
+					},
+					"EventTrigger_properties_typeProperties_scope": {
+						"value": "[parameters('EventTrigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

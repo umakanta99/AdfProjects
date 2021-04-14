@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "DevUmaAdf"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"Azuretosql_linked1_connectionString": {
+			"value": ""
+		},
+		"Azuretosql_linked2_connectionString": {
+			"value": ""
+		},
+		"LS_ADLSGen2_accountKey": {
+			"value": ""
+		},
+		"LS_AzureSql_connectionString": {
+			"value": ""
+		},
+		"LS_sqlToAzure_connectionString": {
+			"value": ""
+		},
+		"azuretosql_linked_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
+		"LS_ADLSGen2_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
+		"azuretosql_linked_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
+		"EventTrigger_properties_SQLToADLSSingleContainer_parameters_SchemaName": {
+			"value": "SalesLT"
+		},
+		"EventTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/cdf7b294-2995-4331-9f21-80e5a2d3f7c4/resourceGroups/uma/providers/Microsoft.Storage/storageAccounts/azuretosql"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
