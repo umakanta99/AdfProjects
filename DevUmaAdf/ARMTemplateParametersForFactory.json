@@ -26,6 +26,9 @@
 		"azuretosql_linked_accountKey": {
 			"value": ""
 		},
+		"Onprem_connectionString": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://azuretosql.dfs.core.windows.net"
 		},
@@ -34,9 +37,6 @@
 		},
 		"azuretosql_linked_properties_typeProperties_url": {
 			"value": "https://azuretosql.dfs.core.windows.net"
-		},
-		"EventTrigger_properties_SQLToADLSSingleContainer_parameters_SchemaName": {
-			"value": "SalesLT"
 		},
 		"EventTrigger_properties_typeProperties_scope": {
 			"value": "/subscriptions/cdf7b294-2995-4331-9f21-80e5a2d3f7c4/resourceGroups/uma/providers/Microsoft.Storage/storageAccounts/azuretosql"

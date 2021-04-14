@@ -35,6 +35,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'azuretosql_linked'"
 		},
+		"Onprem_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Onprem'"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://azuretosql.dfs.core.windows.net"
@@ -46,10 +50,6 @@
 		"azuretosql_linked_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://azuretosql.dfs.core.windows.net"
-		},
-		"EventTrigger_properties_SQLToADLSSingleContainer_parameters_SchemaName": {
-			"type": "string",
-			"defaultValue": "SalesLT"
 		},
 		"EventTrigger_properties_typeProperties_scope": {
 			"type": "string",
@@ -103,6 +103,9 @@
 					"azuretosql_linked_accountKey": {
 						"value": "[parameters('azuretosql_linked_accountKey')]"
 					},
+					"Onprem_connectionString": {
+						"value": "[parameters('Onprem_connectionString')]"
+					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
@@ -111,16 +114,33 @@
 					},
 					"azuretosql_linked_properties_typeProperties_url": {
 						"value": "[parameters('azuretosql_linked_properties_typeProperties_url')]"
-					},
-					"EventTrigger_properties_SQLToADLSSingleContainer_parameters_SchemaName": {
-						"value": "[parameters('EventTrigger_properties_SQLToADLSSingleContainer_parameters_SchemaName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "DevUmaAdf_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
 					},
 					"EventTrigger_properties_typeProperties_scope": {
 						"value": "[parameters('EventTrigger_properties_typeProperties_scope')]"
 					}
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DevUmaAdf_ArmTemplate_0')]"
+			]
 		}
 	]
 }
