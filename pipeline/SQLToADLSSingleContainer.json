@@ -17,13 +17,17 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT TABLE_NAME from INFORMATION_SCHEMA.TABLES\nWHERE TABLE_SCHEMA='SalesLT' AND TABLE_TYPE='BASE TABLE'",
+						"sqlReaderQuery": "SELECT * from INFORMATION_SCHEMA.TABLES\nWHERE TABLE_SCHEMA='SalesLT' AND TABLE_TYPE='BASE TABLE'",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "DSAzureSql",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"TableName": "Address",
+							"SchemaName": "SalesLT"
+						}
 					},
 					"firstRowOnly": false
 				}
@@ -41,10 +45,72 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"batchCount": 1
+					"items": {
+						"value": "@activity('LKP_AllTables').output.value",
+						"type": "Expression"
+					},
+					"batchCount": 1,
+					"activities": [
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Table_Name",
+								"value": {
+									"value": "@item().TABLE_NAME",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "CopyDataFromSQLToADLS",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Set variable1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "DSAzureSql",
+									"type": "DatasetReference",
+									"parameters": {
+										"TableName": "Address",
+										"SchemaName": "SalesLT"
+									}
+								}
+							]
+						}
+					]
 				}
 			}
 		],
+		"variables": {
+			"Table_Name": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
