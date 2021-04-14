@@ -14,7 +14,7 @@
 				"folderPath": "Test",
 				"fileSystem": "eventtrigger"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "|",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
