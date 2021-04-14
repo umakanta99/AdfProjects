@@ -119,7 +119,10 @@
 											"value": "@item().TABLE_NAME",
 											"type": "Expression"
 										},
-										"SchemaName": "SalesLT"
+										"SchemaName": {
+											"value": "@pipeline().parameters.SchemaName",
+											"type": "Expression"
+										}
 									}
 								}
 							],
@@ -140,6 +143,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"SchemaName": {
+				"type": "string",
+				"defaultValue": "SalesLT"
+			}
+		},
 		"variables": {
 			"Table_Name": {
 				"type": "String"
