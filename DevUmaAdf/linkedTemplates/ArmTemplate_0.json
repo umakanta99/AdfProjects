@@ -511,7 +511,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipeline": {
 					"pipelineReference": {
 						"referenceName": "pipeline2",
@@ -524,6 +524,7 @@
 					"frequency": "Minute",
 					"interval": 5,
 					"startTime": "2021-04-15T05:08:00Z",
+					"endTime": "2021-04-15T21:30:00Z",
 					"delay": "00:00:00",
 					"maxConcurrency": 50,
 					"retryPolicy": {

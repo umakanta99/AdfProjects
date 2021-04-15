@@ -602,7 +602,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -612,6 +612,13 @@
 						"parameters": {
 							"SchemaName": "[parameters('Schedule_trigger_properties_SQLToADLSSingleContainer_parameters_SchemaName')]"
 						}
+					},
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline1",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
 					}
 				],
 				"type": "ScheduleTrigger",
@@ -620,12 +627,14 @@
 						"frequency": "Minute",
 						"interval": 7,
 						"startTime": "2021-04-15T04:14:00Z",
+						"endTime": "2021-04-15T21:30:00Z",
 						"timeZone": "UTC"
 					}
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/SQLToADLSSingleContainer')]"
+				"[concat(variables('factoryId'), '/pipelines/SQLToADLSSingleContainer')]",
+				"[concat(variables('factoryId'), '/pipelines/pipeline1')]"
 			]
 		}
 	]
