@@ -17,14 +17,14 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/MoveFromADLSToAzureSQL')]",
+			"name": "[concat(parameters('factoryName'), '/sqlToADLSSIngleCOntainer1')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "CopyDataFromADLSToAzure",
-						"type": "Copy",
+						"name": "LKP_ALLtable1",
+						"type": "Lookup",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
@@ -36,92 +36,169 @@
 						"userProperties": [],
 						"typeProperties": {
 							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": {
+									"value": "@concat('SELECT * from INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA =','''',pipeline().parameters.SchemaName,'''',' AND TABLE_TYPE=''BASE TABLE''')",
+									"type": "Expression"
 								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
 							},
-							"sink": {
-								"type": "AzureSqlSink"
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "AzureBlobEventTrigger",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
+							"dataset": {
 								"referenceName": "DSAzureSql",
 								"type": "DatasetReference",
 								"parameters": {
-									"TableName": "Test1",
-									"SchemaName": "dbo"
+									"TableName": "Address",
+									"SchemaName": "SalesLT"
 								}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "ForEachAzureTosqlTable1",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "LKP_ALLtable1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
 							}
-						]
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('LKP_ALLtable1').output.value",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "Set variable1",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "Table_Name",
+										"value": {
+											"value": "@item().TABLE_NAME",
+											"type": "Expression"
+										}
+									}
+								},
+								{
+									"name": "CopyDataFromSQLToADLS",
+									"type": "Copy",
+									"dependsOn": [
+										{
+											"activity": "Set variable1",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "7.00:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "AzureSqlSource",
+											"queryTimeout": "02:00:00",
+											"partitionOption": "None"
+										},
+										"sink": {
+											"type": "DelimitedTextSink",
+											"storeSettings": {
+												"type": "AzureBlobFSWriteSettings"
+											},
+											"formatSettings": {
+												"type": "DelimitedTextWriteSettings",
+												"quoteAllText": true,
+												"fileExtension": ".txt"
+											}
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "DSAzureSql",
+											"type": "DatasetReference",
+											"parameters": {
+												"TableName": {
+													"value": "@item().TABLE_NAME",
+													"type": "Expression"
+												},
+												"SchemaName": {
+													"value": "@pipeline().parameters.SchemaName",
+													"type": "Expression"
+												}
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DelimitedText1",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									]
+								}
+							]
+						}
 					}
 				],
-				"folder": {
-					"name": "Project1"
+				"parameters": {
+					"SchemaName": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"Table_Name": {
+						"type": "String"
+					}
 				},
 				"annotations": []
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DeleteFileFromADLS')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
+			"name": "[concat(parameters('factoryName'), '/OnPremSqlConnection')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"activities": [
+				"linkedServiceName": {
+					"referenceName": "Onprem",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SqlServerTable",
+				"schema": [
 					{
-						"name": "DeleteFromADLSFiles",
-						"type": "Delete",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "AzureBlobEventTrigger",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"enableLogging": false,
-							"storeSettings": {
-								"type": "AzureBlobFSReadSettings",
-								"recursive": true,
-								"enablePartitionDiscovery": false
-							}
-						}
+						"name": "ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Name",
+						"type": "nvarchar"
 					}
 				],
-				"folder": {
-					"name": "Project1"
-				},
-				"annotations": []
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Test1"
+				}
 			},
 			"dependsOn": []
 		},
@@ -191,7 +268,9 @@
 				},
 				"annotations": []
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/OnPremSqlConnection')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/EventTrigger')]",
@@ -221,9 +300,36 @@
 					]
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/MoveFromADLSToAzureSQL')]"
-			]
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Schedule_trigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "SQLToADLSSingleContainer",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 7,
+						"startTime": "2021-04-15T04:14:00Z",
+						"endTime": "2021-04-15T05:14:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }

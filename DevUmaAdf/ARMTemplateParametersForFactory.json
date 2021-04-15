@@ -23,10 +23,10 @@
 		"LS_sqlToAzure_connectionString": {
 			"value": ""
 		},
-		"azuretosql_linked_accountKey": {
+		"Onprem_connectionString": {
 			"value": ""
 		},
-		"Onprem_connectionString": {
+		"azuretosql_linked_accountKey": {
 			"value": ""
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
