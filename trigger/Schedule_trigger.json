@@ -12,6 +12,12 @@
 				"parameters": {
 					"SchemaName": "dbo"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
@@ -20,6 +26,7 @@
 				"frequency": "Minute",
 				"interval": 7,
 				"startTime": "2021-04-15T04:14:00Z",
+				"endTime": "2021-04-15T08:30:00Z",
 				"timeZone": "UTC"
 			}
 		}
