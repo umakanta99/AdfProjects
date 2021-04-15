@@ -10,6 +10,10 @@
 		"EventTrigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/cdf7b294-2995-4331-9f21-80e5a2d3f7c4/resourceGroups/uma/providers/Microsoft.Storage/storageAccounts/azuretosql"
+		},
+		"Schedule_trigger_properties_SQLToADLSSingleContainer_parameters_SchemaName": {
+			"type": "string",
+			"defaultValue": "dbo"
 		}
 	},
 	"variables": {
@@ -315,7 +319,9 @@
 							"referenceName": "SQLToADLSSingleContainer",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"SchemaName": "[parameters('Schedule_trigger_properties_SQLToADLSSingleContainer_parameters_SchemaName')]"
+						}
 					}
 				],
 				"type": "ScheduleTrigger",
@@ -324,7 +330,6 @@
 						"frequency": "Minute",
 						"interval": 7,
 						"startTime": "2021-04-15T04:14:00Z",
-						"endTime": "2021-04-15T05:14:00Z",
 						"timeZone": "UTC"
 					}
 				}

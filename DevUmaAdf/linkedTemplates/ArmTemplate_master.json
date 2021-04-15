@@ -55,6 +55,10 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/cdf7b294-2995-4331-9f21-80e5a2d3f7c4/resourceGroups/uma/providers/Microsoft.Storage/storageAccounts/azuretosql"
 		},
+		"Schedule_trigger_properties_SQLToADLSSingleContainer_parameters_SchemaName": {
+			"type": "string",
+			"defaultValue": "dbo"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -135,6 +139,9 @@
 					},
 					"EventTrigger_properties_typeProperties_scope": {
 						"value": "[parameters('EventTrigger_properties_typeProperties_scope')]"
+					},
+					"Schedule_trigger_properties_SQLToADLSSingleContainer_parameters_SchemaName": {
+						"value": "[parameters('Schedule_trigger_properties_SQLToADLSSingleContainer_parameters_SchemaName')]"
 					}
 				}
 			},
