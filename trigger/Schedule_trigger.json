@@ -1,0 +1,25 @@
+{
+	"name": "Schedule_trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "SQLToADLSSingleContainer",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 7,
+				"startTime": "2021-04-15T04:14:00Z",
+				"endTime": "2021-04-15T05:14:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
