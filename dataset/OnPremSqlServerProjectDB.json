@@ -1,0 +1,12 @@
+{
+	"name": "OnPremSqlServerProjectDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OnPremSqlServerProject",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
