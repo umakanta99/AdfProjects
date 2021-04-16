@@ -77,68 +77,6 @@
 								"enableStaging": false,
 								"translator": {
 									"type": "TabularTranslator",
-									"mappings": [
-										{
-											"source": {
-												"name": "ID",
-												"type": "Int32",
-												"physicalType": "int"
-											},
-											"sink": {
-												"name": "ID",
-												"type": "Int32",
-												"physicalType": "int"
-											}
-										},
-										{
-											"source": {
-												"name": "Name",
-												"type": "String",
-												"physicalType": "nvarchar"
-											},
-											"sink": {
-												"name": "Name",
-												"type": "String",
-												"physicalType": "nvarchar"
-											}
-										},
-										{
-											"source": {
-												"name": "Gender",
-												"type": "String",
-												"physicalType": "nvarchar"
-											},
-											"sink": {
-												"name": "Gender",
-												"type": "String",
-												"physicalType": "nvarchar"
-											}
-										},
-										{
-											"source": {
-												"name": "Address",
-												"type": "String",
-												"physicalType": "nvarchar"
-											},
-											"sink": {
-												"name": "Address",
-												"type": "String",
-												"physicalType": "nvarchar"
-											}
-										},
-										{
-											"source": {
-												"name": "createdDate",
-												"type": "String",
-												"physicalType": "varchar"
-											},
-											"sink": {
-												"name": "createdDate",
-												"type": "String",
-												"physicalType": "varchar"
-											}
-										}
-									],
 									"typeConversion": true,
 									"typeConversionSettings": {
 										"allowDataTruncation": true,
