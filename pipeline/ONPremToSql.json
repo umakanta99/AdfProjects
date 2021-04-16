@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "AzureSqlSource",
+						"type": "SqlServerSource",
 						"sqlReaderQuery": {
 							"value": "@concat('SELECT * from INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA =','''',pipeline().parameters.SchemaName,'''',' AND TABLE_TYPE=''BASE TABLE''')",
 							"type": "Expression"
@@ -25,13 +25,10 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "AzureSqlTable",
-						"type": "DatasetReference",
-						"parameters": {
-							"TableName": "Customer",
-							"SchemaName": "dbo"
-						}
-					}
+						"referenceName": "OnPremSqlConnection",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
