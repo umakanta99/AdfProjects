@@ -1,0 +1,38 @@
+{
+	"name": "DF_AzureSQLStgDepart",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlData_LS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DepartmentName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DepartmentLocation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DepartmentHead",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Status",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "Department"
+		}
+	}
+}
