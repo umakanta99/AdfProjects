@@ -1,0 +1,37 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable2",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "DF_AzureSQLStgDepart",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "Join1"
+				},
+				{
+					"name": "DerivedColumn1"
+				},
+				{
+					"name": "Select1"
+				}
+			],
+			"script": "source(output(\n\t\tID as integer,\n\t\tName as string,\n\t\tContact as string,\n\t\tDepartmentID as integer,\n\t\tTA as decimal(18,2),\n\t\tDA as decimal(18,2),\n\t\tHRA as decimal(18,2),\n\t\tOthers as decimal(18,2),\n\t\tStatus as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> source1\nsource(output(\n\t\tID as integer,\n\t\tDepartmentName as string,\n\t\tDepartmentLocation as string,\n\t\tDepartmentHead as string,\n\t\tStatus as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> source2\nsource1, source2 join(DepartmentID == source2@ID,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join1\nJoin1 derive(GrossSalary = TA+DA+HRA+Others) ~> DerivedColumn1\nDerivedColumn1 select(mapColumn(\n\t\tID = source1@ID,\n\t\tName,\n\t\tDepartmentName,\n\t\tDepartmentHead,\n\t\tContact,\n\t\tGrossSalary\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1"
+		}
+	}
+}
