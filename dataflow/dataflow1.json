@@ -21,7 +21,7 @@
 					"name": "Filter1"
 				}
 			],
-			"script": "source(output(\n\t\tID as integer,\n\t\tName as string,\n\t\tContact as string,\n\t\tDepartmentID as integer,\n\t\tTA as decimal(18,2),\n\t\tDA as decimal(18,2),\n\t\tHRA as decimal(18,2),\n\t\tOthers as decimal(18,2),\n\t\tStatus as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> source1\nsource1 derive(GrossSalary = TA+DA+HRA+Others) ~> DerivedColumn1\nDerivedColumn1 filter(ID==1) ~> Filter1"
+			"script": "source(output(\n\t\tID as integer,\n\t\tName as string,\n\t\tContact as string,\n\t\tDepartmentID as integer,\n\t\tTA as decimal(18,2),\n\t\tDA as decimal(18,2),\n\t\tHRA as decimal(18,2),\n\t\tOthers as decimal(18,2),\n\t\tStatus as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> source1\nsource1 derive(GrossSalary = TA+DA+HRA+Others) ~> DerivedColumn1\nDerivedColumn1 filter(ID==2) ~> Filter1"
 		}
 	}
 }
