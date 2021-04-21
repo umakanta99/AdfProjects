@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "all.txt",
 				"fileSystem": "alldepartment"
 			},
 			"columnDelimiter": "|",
