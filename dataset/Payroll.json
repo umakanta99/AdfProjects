@@ -1,0 +1,28 @@
+{
+	"name": "Payroll",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Payroll_Linked_Service",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "payroll.txt",
+				"fileSystem": "sqldata1"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Id|LastName|FirstName|City|Department",
+				"type": "String"
+			}
+		]
+	}
+}
