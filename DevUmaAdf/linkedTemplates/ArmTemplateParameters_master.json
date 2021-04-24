@@ -5,13 +5,40 @@
 		"factoryName": {
 			"value": "DevUmaAdf"
 		},
+		"AlterRow_Linked_Service_accountKey": {
+			"value": ""
+		},
+		"AzureData_accountKey": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureData_LS_accountKey": {
+			"value": ""
+		},
+		"AzureSqlData_LS_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase_LS_connectionString": {
 			"value": ""
 		},
 		"Azuretosql_linked1_connectionString": {
 			"value": ""
 		},
 		"Azuretosql_linked2_connectionString": {
+			"value": ""
+		},
+		"Dataflow_Destination_accountKey": {
+			"value": ""
+		},
+		"HR_Linked_SERVICE_accountKey": {
+			"value": ""
+		},
+		"IT_Linked_Service_accountKey": {
 			"value": ""
 		},
 		"LS_ADLSGen2_accountKey": {
@@ -23,16 +50,58 @@
 		"LS_sqlToAzure_connectionString": {
 			"value": ""
 		},
+		"OnPremSqlServerProject_connectionString": {
+			"value": ""
+		},
 		"Onprem_connectionString": {
+			"value": ""
+		},
+		"Payroll_Linked_Service_accountKey": {
+			"value": ""
+		},
+		"Sink_Linked_Service_accountKey": {
+			"value": ""
+		},
+		"SqlServer_link_Service_connectionString": {
 			"value": ""
 		},
 		"azuretosql_linked_accountKey": {
 			"value": ""
 		},
+		"DeleteActivity_Linked_Service_accountKey": {
+			"value": ""
+		},
+		"AlterRow_Linked_Service_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
+		"AzureData_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://azuretosql.dfs.core.windows.net"
 		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
+		"AzureData_LS_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
+		"Dataflow_Destination_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
+		"HR_Linked_SERVICE_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
+		"IT_Linked_Service_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
 		"LS_ADLSGen2_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
+		"Payroll_Linked_Service_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
+		},
+		"Sink_Linked_Service_properties_typeProperties_url": {
 			"value": "https://azuretosql.dfs.core.windows.net"
 		},
 		"azuretosql_linked_properties_typeProperties_url": {
@@ -43,6 +112,9 @@
 		},
 		"Schedule_trigger_properties_SQLToADLSSingleContainer_parameters_SchemaName": {
 			"value": "dbo"
+		},
+		"DeleteActivity_Linked_Service_properties_typeProperties_url": {
+			"value": "https://azuretosql.dfs.core.windows.net"
 		},
 		"containerUri": {
 			"value": ""

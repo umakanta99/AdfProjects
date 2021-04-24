@@ -7,9 +7,33 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "DevUmaAdf"
 		},
+		"AlterRow_Linked_Service_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AlterRow_Linked_Service'"
+		},
+		"AzureData_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureData'"
+		},
 		"AzureDataLakeStorage1_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
+		},
+		"AzureData_LS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureData_LS'"
+		},
+		"AzureSqlData_LS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlData_LS'"
+		},
+		"AzureSqlDatabase_LS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase_LS'"
 		},
 		"Azuretosql_linked1_connectionString": {
 			"type": "secureString",
@@ -18,6 +42,18 @@
 		"Azuretosql_linked2_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Azuretosql_linked2'"
+		},
+		"Dataflow_Destination_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'Dataflow_Destination'"
+		},
+		"HR_Linked_SERVICE_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'HR_Linked_SERVICE'"
+		},
+		"IT_Linked_Service_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'IT_Linked_Service'"
 		},
 		"LS_ADLSGen2_accountKey": {
 			"type": "secureString",
@@ -31,19 +67,75 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_sqlToAzure'"
 		},
+		"OnPremSqlServerProject_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'OnPremSqlServerProject'"
+		},
 		"Onprem_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Onprem'"
+		},
+		"Payroll_Linked_Service_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'Payroll_Linked_Service'"
+		},
+		"Sink_Linked_Service_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'Sink_Linked_Service'"
+		},
+		"SqlServer_link_Service_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SqlServer_link_Service'"
 		},
 		"azuretosql_linked_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'azuretosql_linked'"
 		},
+		"DeleteActivity_Linked_Service_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'DeleteActivity_Linked_Service'"
+		},
+		"AlterRow_Linked_Service_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
+		"AzureData_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://azuretosql.dfs.core.windows.net"
 		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
+		"AzureData_LS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
+		"Dataflow_Destination_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
+		"HR_Linked_SERVICE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
+		"IT_Linked_Service_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
 		"LS_ADLSGen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
+		"Payroll_Linked_Service_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
+		},
+		"Sink_Linked_Service_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://azuretosql.dfs.core.windows.net"
 		},
@@ -58,6 +150,10 @@
 		"Schedule_trigger_properties_SQLToADLSSingleContainer_parameters_SchemaName": {
 			"type": "string",
 			"defaultValue": "dbo"
+		},
+		"DeleteActivity_Linked_Service_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuretosql.dfs.core.windows.net"
 		},
 		"containerUri": {
 			"type": "string",
@@ -86,14 +182,41 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"AlterRow_Linked_Service_accountKey": {
+						"value": "[parameters('AlterRow_Linked_Service_accountKey')]"
+					},
+					"AzureData_accountKey": {
+						"value": "[parameters('AzureData_accountKey')]"
+					},
 					"AzureDataLakeStorage1_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureDataLakeStorage2_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
+					},
+					"AzureData_LS_accountKey": {
+						"value": "[parameters('AzureData_LS_accountKey')]"
+					},
+					"AzureSqlData_LS_connectionString": {
+						"value": "[parameters('AzureSqlData_LS_connectionString')]"
+					},
+					"AzureSqlDatabase_LS_connectionString": {
+						"value": "[parameters('AzureSqlDatabase_LS_connectionString')]"
 					},
 					"Azuretosql_linked1_connectionString": {
 						"value": "[parameters('Azuretosql_linked1_connectionString')]"
 					},
 					"Azuretosql_linked2_connectionString": {
 						"value": "[parameters('Azuretosql_linked2_connectionString')]"
+					},
+					"Dataflow_Destination_accountKey": {
+						"value": "[parameters('Dataflow_Destination_accountKey')]"
+					},
+					"HR_Linked_SERVICE_accountKey": {
+						"value": "[parameters('HR_Linked_SERVICE_accountKey')]"
+					},
+					"IT_Linked_Service_accountKey": {
+						"value": "[parameters('IT_Linked_Service_accountKey')]"
 					},
 					"LS_ADLSGen2_accountKey": {
 						"value": "[parameters('LS_ADLSGen2_accountKey')]"
@@ -104,17 +227,47 @@
 					"LS_sqlToAzure_connectionString": {
 						"value": "[parameters('LS_sqlToAzure_connectionString')]"
 					},
+					"Payroll_Linked_Service_accountKey": {
+						"value": "[parameters('Payroll_Linked_Service_accountKey')]"
+					},
+					"Sink_Linked_Service_accountKey": {
+						"value": "[parameters('Sink_Linked_Service_accountKey')]"
+					},
 					"azuretosql_linked_accountKey": {
 						"value": "[parameters('azuretosql_linked_accountKey')]"
 					},
-					"Onprem_connectionString": {
-						"value": "[parameters('Onprem_connectionString')]"
+					"AlterRow_Linked_Service_properties_typeProperties_url": {
+						"value": "[parameters('AlterRow_Linked_Service_properties_typeProperties_url')]"
+					},
+					"AzureData_properties_typeProperties_url": {
+						"value": "[parameters('AzureData_properties_typeProperties_url')]"
 					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
+					"AzureDataLakeStorage2_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
+					},
+					"AzureData_LS_properties_typeProperties_url": {
+						"value": "[parameters('AzureData_LS_properties_typeProperties_url')]"
+					},
+					"Dataflow_Destination_properties_typeProperties_url": {
+						"value": "[parameters('Dataflow_Destination_properties_typeProperties_url')]"
+					},
+					"HR_Linked_SERVICE_properties_typeProperties_url": {
+						"value": "[parameters('HR_Linked_SERVICE_properties_typeProperties_url')]"
+					},
+					"IT_Linked_Service_properties_typeProperties_url": {
+						"value": "[parameters('IT_Linked_Service_properties_typeProperties_url')]"
+					},
 					"LS_ADLSGen2_properties_typeProperties_url": {
 						"value": "[parameters('LS_ADLSGen2_properties_typeProperties_url')]"
+					},
+					"Payroll_Linked_Service_properties_typeProperties_url": {
+						"value": "[parameters('Payroll_Linked_Service_properties_typeProperties_url')]"
+					},
+					"Sink_Linked_Service_properties_typeProperties_url": {
+						"value": "[parameters('Sink_Linked_Service_properties_typeProperties_url')]"
 					},
 					"azuretosql_linked_properties_typeProperties_url": {
 						"value": "[parameters('azuretosql_linked_properties_typeProperties_url')]"
@@ -137,6 +290,61 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"DeleteActivity_Linked_Service_accountKey": {
+						"value": "[parameters('DeleteActivity_Linked_Service_accountKey')]"
+					},
+					"OnPremSqlServerProject_connectionString": {
+						"value": "[parameters('OnPremSqlServerProject_connectionString')]"
+					},
+					"Onprem_connectionString": {
+						"value": "[parameters('Onprem_connectionString')]"
+					},
+					"DeleteActivity_Linked_Service_properties_typeProperties_url": {
+						"value": "[parameters('DeleteActivity_Linked_Service_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DevUmaAdf_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "DevUmaAdf_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"SqlServer_link_Service_connectionString": {
+						"value": "[parameters('SqlServer_link_Service_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DevUmaAdf_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "DevUmaAdf_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
 					"EventTrigger_properties_typeProperties_scope": {
 						"value": "[parameters('EventTrigger_properties_typeProperties_scope')]"
 					},
@@ -146,7 +354,7 @@
 				}
 			},
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'DevUmaAdf_ArmTemplate_0')]"
+				"[resourceId('Microsoft.Resources/deployments', 'DevUmaAdf_ArmTemplate_2')]"
 			]
 		}
 	]
